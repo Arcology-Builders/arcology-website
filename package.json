@@ -1,0 +1,30 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "description": "Node.js demo project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ppham/node-demo.git"
+  },
+  "author": "Paul Pham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ppham/node-demo/issues"
+  },
+  "homepage": "https://github.com/ppham/node-demo",
+  "private": "true",
+  "dependencies": {
+    "express": "^4.12.0",
+    "jade": "^1.9.2"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^0.18.0"
+  }
+}

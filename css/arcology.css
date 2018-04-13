@@ -58,6 +58,22 @@ section#mainTitle h1 {
     padding-bottom: 10px;
 }
 
+section#rooms li {
+    width: 150px;
+    float: left;
+    position: relative;
+    padding: 10px;
+    bullet-style: none;
+}
+
+section#rooms li header {
+    font-size: 14px;
+}
+
+section#rooms img {
+    width: 100px;
+}
+
 #subheading {
     background: #061E2F; 
 }

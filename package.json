@@ -20,7 +20,8 @@
   "private": "true",
   "dependencies": {
     "express": "^4.12.0",
-    "jade": "^1.9.2"
+    "jade": "^1.9.2",
+    "npm": "^6.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

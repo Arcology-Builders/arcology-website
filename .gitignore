@@ -29,3 +29,5 @@ node_modules
 
 # vim swap files
 *.swp
+
+contracts/data

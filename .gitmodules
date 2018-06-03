@@ -1,0 +1,3 @@
+[submodule "contracts/data"]
+	path = contracts/data
+	url = git@github.com:invisible-college/arcology-contracts.git

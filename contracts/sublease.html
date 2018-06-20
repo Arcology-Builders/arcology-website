@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
+  <head>
 <title>Arcology NYC Sublease</title>
 
 <style media="screen" type="text/css">
-  code span {
+   span.filled {
     font-weight: bold;
-    text-decoration: 2px green underline;
+    border-bottom: 3px green solid;
   }
 </style>
-
+  </head>
+  <body>
 <xmp theme="Journal" style="display:none;" id="subleaseText">
 
 # SUBLEASE AND TEMPORARY HOUSEMATE AGREEMENT
-
 FOR ARCOLOGY NYC
 
 A Hacker Community Home
@@ -26,7 +27,7 @@ NEW YORK 11237
 ## Preamble
 
 This Sublease Agreement, dated
-<span id="preparedDate" class="filled"></span>
+<span id="preparedDate"></span>
 , is made between Paul Pham (paul@invisible.college) on behalf of
 <b>Arcology NYC</b>, the Sublessor, and <span id="sublesseeName"></span> (<span id="sublesseeEmail"></span>), the Sublessee.
 The Sublessor and the Sublessee both agree that the Sublessee shall lease from the Sublessor a
@@ -105,6 +106,11 @@ choice of the Sublessee.
 
 Any reason for retaining a portion of the Deposit will be explained in writing on the
 Move-Out Date.
+
+<div class="prevContractId" style="display: none;">
+This contract subsumes the previous contract with ID <span id="prevContractId"></span>
+and carries forward any security deposit from it.
+</div>
 
 ## <span class="header">Payment Methods and Return of Deposit</span>
 
@@ -237,12 +243,48 @@ function addLoadJs(filename) {
 function numberHeaders() {
   var headers = document.getElementsByClassName("header");
   var i = 0;
-  for (var h in headers) {
-    if (headers[h].getAttribute("style") === "display: none;") {
+  for (var i=0; i < headers.length; i++) {
+    if (headers[i].getAttribute("style") === "display: none;") {
       continue;
     }
-    headers[h].innerHTML = i + ". " + headers[h].innerHTML;
-    i += 1;
+    headers[i].innerHTML = i + ". " + headers[i].innerHTML;
+  }
+}
+
+function populateProjects(el, projList) {
+  for (var i in projList) {
+    var p = projList[i];
+    console.log(JSON.stringify(p));
+    var proj = document.createElement("li");
+    proj.innerHTML = p['desc'] + " for " + p['hours'] + " hours.";
+    el.appendChild(proj);
+  }
+}
+
+function populateBeds(el, bedList) {
+  for (var i in bedList) {
+    var r = bedList[i];
+    console.log(JSON.stringify(r));
+    var room = document.createElement("li");
+    room.innerHTML = 'Bed ' + r['bedNumber'] + ' described by URL ' + r['airbnbUrl'] +
+      ' moving in on ' + r['moveInDate'] + ' moving out on ' + r['moveOutDate'] +
+      ' for a total of ' + r['days'] + ' nights.';
+    el.appendChild(room);
+  }
+}
+
+function populateLists(key, list, el) {
+
+  var paramListMap = {
+    "bedList": populateBeds,
+    "projectList": populateProjects
+  }
+  
+  for (var name in paramListMap) {
+    if (key === name) {
+      paramListMap[name](el, list);
+      break;
+    }
   }
 }
 
@@ -256,23 +298,23 @@ window.addEventListener('load', function() {
         var el = document.getElementById(key);
         if (el) {
           if ((typeof(params[key]) === "object") && params[key].length > 0) {
-            for (var i in params[key]) {
-              var r = params[key][i];
-              console.log(JSON.stringify(r));
-              var room = document.createElement("li");
-              room.innerHTML = 'Bed ' + r['bedNumber'] + ' described by URL ' + r['airbnbUrl'] +
-                ' moving in on ' + r['moveInDate'] + ' moving out on ' + r['moveOutDate'] +
-                ' for a total of ' + r['days'] + ' nights.';
-              el.appendChild(room);
-            }
+            populateLists(key, params[key], el);          
           } else {
             el.innerHTML = params[key];
+            // Enable hidden divs dependent on the same key
+            var hiddenDivs = document.getElementsByClassName(key);
+            for (var i=0; i < hiddenDivs.length; i++) {
+              hiddenDivs[i].setAttribute("style", "");
+            }
             el.setAttribute("style", "font-weight: bold;");
+            el.setAttribute("class", "filled");
           }
         } else {
           console.error("Key not found: " + key);
         }
       }
+      var prepDate = document.getElementById("preparedDate");
+      prepDate.innerHTML = new Date().toUTCString().substr(5,11);
     });
   } else {
     console.error("No filename specified in url argument fn");
@@ -284,5 +326,5 @@ window.addEventListener('load', function() {
 </script>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-
+  </body>
 </html>

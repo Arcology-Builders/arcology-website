@@ -31,7 +31,7 @@ This Sublease Agreement, dated
 , is made between Paul Pham (paul@invisible.college) on behalf of
 <b>Arcology NYC</b>, the Sublessor, and <span id="sublesseeName"></span> (<span id="sublesseeEmail"></span>), the Sublessee.
 The Sublessor and the Sublessee both agree that the Sublessee shall lease from the Sublessor a
-portion of the Sublessor’s interest in the apartment located at 303 Stockholm Street, #4B,
+portion of the Sublessor’s interest in the apartments located at 303 Stockholm Street, #4B and #4F,
 Brooklyn NY 11237, the Premises, as temporary and mutually respectful housemates on the following terms:
 
 ## <span class="header">Nature</span>
@@ -58,23 +58,60 @@ Ask your house captain (Sublessor) for any tools, materials, resources, or proje
 
 ## <span class="header">Lease Term</span>
 
+<!-- Only one of the following two will be made visible -->
+<div class="type-days" style="display: none;">
 The term of the Lease will be for a period of <span id="subleaseDays"></span> days,
 according to the schedule
 below, conditioned on full payment of the amounts below by <span id="moveInDate"></span>, the Move-In Date.
+</div>
+
+<div class="type-monthly" style="display: none;">
+The Lease is month-to-month commencing with a move-in date on <span id="moveInDate"></span>
+and continuing each month until the Sublessee terminates the lease, giving a
+minimum notice of <span id="noticeDays"></span> days. At the latest, the Sublessee agrees
+to vacate the premises on the move out date of <span id="finalMoveOutDate"></span>.
+</div>
 
   <ul id="bedList">
   </ul>
 
 ## <span class="header">Rent</span>
 
+<div class="type-days" style="display: none;">
 Sublessee will pay a total amount of <span id="totalAmount"></span>
 (<span id="totalAmountInWords"></span>)
     (the Total Payment) with the following breakdown.
 
-  1. <span id="rentAmount"></span> for renting of an empty room with a bed, mattress, clean sheets, towel, dresser, desk, and chair.
-  1. <span id="cleaningAmount"></span> for weekly deep cleaning.
-  1. <span id="depositAmount"></span> as a refundable security deposit less any of the
+  <ol>
+    <li>
+      <span id="rentAmount"></span> for renting of a <span id="furniture"></span>
+    </li>
+    <li>
+      <span id="cleaningAmount"></span> for monthly deep cleaning.
+    </li>
+    <li>
+      <span id="depositAmount"></span> as a refundable security deposit less any of the
   expenses described in the next section.
+    </li>
+  </ol>
+</div>
+
+<div class="type-monthly" style="display: none;">
+  Each month Sublessee will pay the following amounts:
+  
+  <ol>
+    <li>
+      <span id="monthlyRentAmount"></span> for renting of a <span id="furniture"></span>. 
+    </li>
+    <li>
+      <span id="monthlyCleaningAmount"></span> for a monthly deep cleaning.
+    </li>
+    <li>
+      <span id="depositAmount"></span> as a refundable security deposit less any of the
+      expenses described in the next section
+    </li>
+  </ol>
+</div>
 
 ## <span class="header" style="display: none;">Projects</span>
 
@@ -121,8 +158,8 @@ equal to the Rent Payment plus Security Deposit,
   1. Venmo to the screen name `@paul-pham-7`
   1. a paper check drawn on a U.S. bank account
   1. <span id="totalAmountNumber"></span> DAI, an ERC20-compliant stablecoin with contract address `0xc94a6e7776bade5da316cf6fd8c751fb0d5c3c5e`,
-payable to the Sublessor at ETH address `0x9504F364982930443406b9aB86a502Dd1D2f4C8d`
-  4. The equivalent ETH at the current GDAX exchange rate to ETH address `0x9504F364982930443406b9aB86a502Dd1D2f4C8d`, to be agreed with Sublessor beforehand and valid for one hour.
+payable to the Sublessor at ETH address `0x36E5A96c8d01803d2C48756AA7bde1c01d7D9f8A`
+  4. The equivalent ETH at the current GDAX exchange rate to ETH address `0x36E5A96c8d01803d2C48756AA7bde1c01d7D9f8A`, to be agreed with Sublessor beforehand and valid for one hour.
 
 ## <span class="header">Common Spaces</span>
 
@@ -262,19 +299,43 @@ function populateProjects(el, projList) {
   }
 }
 
-function populateBeds(el, bedList) {
+function concatHtmlItems(items, className) {
+  return Array.prototype.concat.apply(items, document.getElementsByClassName(className));
+}
+
+function showHiddens(key, value) {
+  var className = key+'-'+value;
+  console.log(className);
+
+  // Enable hidden divs dependent on the same key
+  var hiddenDivs = []
+  hiddenDivs = concatHtmlItems(hiddenDivs, key);
+  // Combine with divs of class 'key-value'
+  hiddenDivs = concatHtmlItems(hiddenDivs, className);
+
+  for (var i=0; i < hiddenDivs.length; i++) {
+    hiddenDivs[i].setAttribute("style", "");
+  }
+}
+
+function populateBeds(el, bedList, type) {
   for (var i in bedList) {
     var r = bedList[i];
     console.log(JSON.stringify(r));
     var room = document.createElement("li");
     room.innerHTML = 'Bed ' + r['bedNumber'] + ' described by URL ' + r['airbnbUrl'] +
-      ' moving in on ' + r['moveInDate'] + ' moving out on ' + r['moveOutDate'] +
-      ' for a total of ' + r['days'] + ' nights.';
+      ' moving in on ' + r['moveInDate'] + ' moving out on ' + r['moveOutDate'];
+    if (r['furniture']) {
+      room.innerHTML += ' with the following furniture: ';
+    }
+    if (type === 'days') {
+      room.innerHTML += ' for a total of ' + r['days'] + ' nights.';
+    }
     el.appendChild(room);
   }
 }
 
-function populateLists(key, list, el) {
+function populateLists(key, list, el, type) {
 
   var paramListMap = {
     "bedList": populateBeds,
@@ -283,7 +344,7 @@ function populateLists(key, list, el) {
   
   for (var name in paramListMap) {
     if (key === name) {
-      paramListMap[name](el, list);
+      paramListMap[name](el, list, type);
       break;
     }
   }
@@ -292,21 +353,21 @@ function populateLists(key, list, el) {
 window.addEventListener('load', function() {
   var urlParams = getJsonFromUrl();
   var fn = urlParams['fn'];
+
   if (fn) {
     var loadPromise = addLoadJs("data/" + fn + ".js"); 
     loadPromise.then(function(params) {
       for (var key in params) {
         var el = document.getElementById(key);
-        if (el) {
+        if (key === 'type') {
+          showHiddens('type', params[key]); 
+        } if (el) {
           if ((typeof(params[key]) === "object") && params[key].length > 0) {
-            populateLists(key, params[key], el);          
+            populateLists(key, params[key], el, params['type']);          
           } else {
             el.innerHTML = params[key];
-            // Enable hidden divs dependent on the same key
-            var hiddenDivs = document.getElementsByClassName(key);
-            for (var i=0; i < hiddenDivs.length; i++) {
-              hiddenDivs[i].setAttribute("style", "");
-            }
+            showHiddens(key, params[key]);
+            // Make all substituted values stand out.
             el.setAttribute("style", "font-weight: bold;");
             el.setAttribute("class", "filled");
           }

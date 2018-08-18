@@ -13,8 +13,12 @@
   <body>
 <xmp theme="Journal" style="display:none;" id="subleaseText">
 
+<div class="daysTotalWarning" style="display: none;">TOTAL PAYMENT AMOUNT DOES NOT ADD UP</div>
+<div class="monthlyTotalWarning" style="display: none;">MONTHLY TOTAL AMOUNT DOES NOT ADD UP</div>
+<div class="monthlyMoveInWarning" style="display: none;">MONTHLY MOVE-IN AMOUNT DOES NOT ADD UP</div>
+
 # SUBLEASE AND TEMPORARY HOUSEMATE AGREEMENT
-FOR ARCOLOGY NYC
+FOR `ARCOLOGY NYC`
 
 A Hacker Community Home
 in the State of New York,
@@ -28,14 +32,14 @@ NEW YORK 11237
 
 This Sublease Agreement, dated
 <span class="preparedDate blank"></span>
-, is made between Paul Pham (paul@invisible.college) on behalf of
+, is made between `Paul Pham (paul@invisible.college)` on behalf of
 <b>Arcology NYC</b>, the Sublessor, and
 <span class="sublesseeName blank"></span> (<span class="sublesseeEmail blank"></span>),
 the Sublessee.
 The Sublessor and the Sublessee both agree that the Sublessee shall lease from
 the Sublessor a portion of the Sublessor’s interest in the apartments located at
-303 Stockholm Street, #4B and #4F,
-Brooklyn NY 11237, the Premises, as temporary and mutually
+`303 Stockholm Street, #4B and #4F, Brooklyn NY 11237`,
+the Premises, as temporary and mutually
 respectful housemates on the following terms:
 
 ## <span class="header">Nature</span>
@@ -72,12 +76,19 @@ below, conditioned on full payment of the amounts below by
 </div>
 
 <div class="type-monthly" style="display: none;">
-The Lease is month-to-month commencing with a move-in date on
-<span class="moveInDate blank"></span>
-and continuing each month until the Sublessee terminates the lease, giving a
+The Lease is a <span class="monthlyType blank"></span> commencing with a move-in date on
+<span class="moveInDate blank"></span>.
+
+<div class="type-month-to-month" style="display: none;">
+The Lease will continue month-to-month
+  until the Sublessee terminates the lease, giving a
 minimum notice of <span class="noticeDays blank"></span> days. At the latest, the Sublessee agrees
 to vacate the premises on the move out date of <span class="finalMoveOutDate blank"></span>.
+</span>
 
+</div>
+
+<div>
 The Sublessee can only take possession of the rented units below upon payment of 
 the Move-In Amount, described in the next section.
 </div>
@@ -250,15 +261,22 @@ following events (the “Event of Default”) occurs:
 
 If the Sublessee is in default, then this agreement will immediately
 become null and void and the Sublessor will automatically claim right
-to the Security Deposit.
+to the Security Deposit
+<span class="type-monthly blank" style="display: none;">and any Last Month's Rent</span>
+.
 
 ## <span class="header">Nonpayment</span>
 
 In the event that the Rent Payment required to be paid by the Sublessee is not
-paid in full by the Move-In Date, an initial late fee as additional rent in the
+paid in full by the Move-In Date, an initial late fee will be added as additional rent in the
 amount of 5% of the Rent Payment. Further, a subsequent late fee of 20 USD per day will
-be incurred by the Sublessee for every day payment is delayed after the Move-In Date.
-The Sublessee’s failure to pay the Rent Payment by the third day after the Move-In Date will
+be incurred by the Sublessee for every day payment is delayed after
+<span class="type-days blank" style="display: none;">Move-In Date.</span>
+<span class="type-monthly blank" style="display: none;"first day of the month.</span>
+The Sublessee’s failure to pay the Rent Payment by the third day after the
+<span class="type-days blank" style="display: none;">Move-In Date</span>
+<span class="type-monthly blank" style="display: none;">first day of the month</span>
+will
 trigger stern language, frowning expressions, and ultimately eviction
 proceedings.
 A Non-Payment Petition and a Notice of Petition will be filed with the housing court.
@@ -388,7 +406,7 @@ function populateProjects(el, projList) {
     var p = projList[i];
     console.log(JSON.stringify(p));
     var proj = document.createElement("li");
-    proj.innerHTML = p['desc'] + " for " + p['hours'] + " hours.";
+    proj.innerHTML = p['desc'] + " for " + p['hours'];
     el.appendChild(proj);
   }
 }
@@ -416,7 +434,7 @@ function populateBeds(el, bedList, type) {
     var r = bedList[i];
     console.log(JSON.stringify(r));
     var room = document.createElement("li");
-    room.innerHTML = 'Bed ' + r['bedNumber'] + ' described by URL ' + r['airbnbUrl'] +
+    room.innerHTML = '<a href="' + r['airbnbUrl'] + '">Bed ' + r['bedNumber'] + '</a>' +
       ' moving in on ' + r['moveInDate'] + ' moving out on ' + r['moveOutDate'];
     if (r['furniture']) {
       room.innerHTML += ' with the following furniture: ';
@@ -453,7 +471,6 @@ window.addEventListener('load', function() {
       for (var key in params) {
         var elts = document.getElementsByClassName(key);
         var el = document.getElementById(key);
-        console.log(key + " el " + JSON.stringify(el));
         if (key === 'type') {
           showHiddens('type', params[key]); 
         } else if (elts.length > 0) {
@@ -469,6 +486,14 @@ window.addEventListener('load', function() {
         }
       }
       substitute("preparedDate", new Date().toUTCString().substr(5,11));
+      if (params['type'] === "monthly") {
+        if (parseInt(params['noticeDays']) === 0) {
+          substitute("monthlyType", params['maxSubleaseMonths'] + "-month");
+        } else {
+          substitute("monthlyType", "month-to-month");
+          showHiddens("type", "month-to-month");
+        }
+      }
     });
   } else {
     console.error("No filename specified in url argument fn");
@@ -480,6 +505,7 @@ window.addEventListener('load', function() {
 
 </script>
 
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+<!-- <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script> -->
+<script src="../js/strapdown.min.js"></script>
   </body>
 </html>

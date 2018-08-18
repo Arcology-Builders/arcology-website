@@ -4,9 +4,9 @@ var params = {
   sublesseeName: "Irving Q. Mojo ",
   sublesseeEmail: "irving@mojo.com",
   maxSubleaseMonths: 6,
-  moveInDate: "1 September 2018", // should always be the 1st day
-  finalMoveOutDate: "31 March 2019", // should always be the last calendar day of month
-  noticeDays: 0, // setting this to 0 makes it a normal monthly contract
+  moveInMonth: "September 2018",
+  finalMoveOutMonth: "March 2018",
+  noticeDays: 30, // setting this to 0 makes it a normal monthly contract
   gracePeriod: 3,
   furniture: "a stack of mattresses with a pea hidden in them",
   bedList: [
@@ -18,9 +18,6 @@ var params = {
     }
   ],
   projectList: [
-    { hours: "1 hour per month", // of the form "hours" or "hours per week"
-      desc: 'enhancing the house website hosted at <a href="http://arcology.nyc">http://arcology.nyc</a>'
-    }
   ],
   monthlyTotalAmount: "1161 USD",
   monthlyTotalAmountNumber: 1161,

@@ -22,16 +22,10 @@ var params = {
       desc: 'enhancing the house website hosted at <a href="http://arcology.nyc">http://arcology.nyc</a>'
     }
   ],
-  monthlyTotalAmount: "1161 USD",
   monthlyTotalAmountNumber: 1161,
-  monthlyRentAmount: "1111",
   monthlyRentAmountNumber: 1111,
-  lastMonthAmount: "1111 USD",
   lastMonthAmountNumber: 1111,
-  monthlyCleaningAmount: "50 USD",
   monthlyCleaningAmountNumber: 50,
-  depositAmount: "1111 USD",
   depositAmountNumber: 1111,
-  moveInAmount: "3383 USD",
   moveInAmountNumber: 3383,
 };

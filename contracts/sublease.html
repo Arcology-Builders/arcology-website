@@ -182,7 +182,9 @@ Sublessee will pay a total amount of <span class="totalAmount blank"></span>
 ## <span class="header" style="display: none;">Projects</span>
 
 A Sublessor staying for longer than two weeks is asked to contribute work hours to
-running a productive, clean, prosperous Arcology for all residents. The tasks below are
+running a productive, clean, prosperous Arcology for all residents. The Sublessor
+agrees to perform the tasks below before the end date of the Sublease in order to
+release back the Security Deposit. The projects are
 chosen to suit the interests, needs, and karma of the Sublessor.
 
   <ul class="projectList">
@@ -213,7 +215,7 @@ choice of the Sublessee, less any of the following expenses.
 Any reason for retaining a portion of the Deposit will be explained in writing on the
 Move-Out Date.
 
-<div class="prevContractId" style="display: none;">
+<div class="prevContractId-" style="display: none;">
 This contract subsumes the previous contract with ID
 <span class="prevContractId blank"></span>
 and carries forward any security deposit from it.
@@ -463,12 +465,14 @@ function concatHtmlItems(items, className) {
 
 function showHiddens(key, value) {
   var className = key+'-'+value;
+  var nonEmptyClassName = key+'-'; // Hidden divs dependent on any non-empty value
 
   // Enable hidden divs dependent on the same key
   var hiddenDivs = []
   hiddenDivs = concatHtmlItems(hiddenDivs, key);
   // Combine with divs of class 'key-value'
   hiddenDivs = concatHtmlItems(hiddenDivs, className);
+  hiddenDivs = concatHtmlItems(hiddenDivs, nonEmptyClassName);
 
   for (var i=0; i < hiddenDivs.length; i++) {
     hiddenDivs[i].setAttribute("style", "");

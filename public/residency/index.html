@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Creative Residency at Invisible College</title>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="etc/photoswipe.css">
+</head>
+
+<style>
+    /* Eric Meyer reset*/
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+    body {
+        background: black;
+        color: #333;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    h1,
+    h2 {
+        font-family: 'Alegreya Sans', sans-serif;
+    }
+
+    h1 {
+        font-size: 60px;
+        color: #222;
+    }
+
+    h2 {
+        color: #666;
+        font-size: 32px;
+    }
+
+    #wrap {
+        background: #eee;
+        max-width: 800px;
+        margin: 40px auto 60px;
+        padding-bottom: 40px;
+    }
+
+    div {
+        margin-bottom: 50px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    p {
+        font-size: 1.15em;
+        line-height: 1.25em;
+        padding: 0 10px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    ul {
+        margin: 30px 0;
+    }
+
+    li {
+        list-style: none;
+        padding-left: 35px;
+        margin-bottom: 15px;
+    }
+
+    #gallery {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #gallery img {
+        max-width: 200px;
+        margin: 15px;
+        box-shadow: 2px 3px 4px rgba(33, 33, 33, .3);
+        cursor: pointer;
+    }
+
+    @media (min-width: 800px) {
+
+        #header {
+            padding-left: 7%;
+        }
+
+        #heading-left {
+            padding-left: 15%
+        }
+
+        #heading-right {
+            float: right;
+            padding-right: 15%;
+        }
+    }
+
+    /* PhotoSwipe style overrites */
+
+    button.pswp__button {
+        display: none;
+    }
+
+    #wrap div.pswp__ui {
+        color: white;
+    }
+
+    .pswp__caption {
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        font-size: 32px;
+    }
+
+    .pswp__caption--fake {
+        display: none;
+    }
+
+
+</style>
+
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1 id="heading-left">Invisible College</h1>
+            <h1 id="heading-right">Creative Residency</h1>
+            <h2 id="subtitle">a self-guided creative retreat for open source art, design, coding, and cryptocoins</h2>
+        </div>
+
+        <div id="thinkmake">
+            <img src="thinkmake.jpg" />
+        </div>
+
+        <div id="descr">
+            <p>
+            Need a place to get focused creative work done?
+            Want some fun inspiring conversation?
+            <br/>
+            Magic happens when a coder sits next to a designer, a researcher eats dinner with a musician, or a crypto-ronin bunks with a novelist.
+
+            <br/><br/>
+            The Invisible College is now offering live-in residencies of one week intervals from January 14th through February 28th. There is no fee to participate in the residency. Residents will be reimbursed up to $200 for travel expenses.
+            <br/>
+            </p>
+
+            <br/><br/>
+
+            <p style="font-weight: bold">Weekly Schedule:</p>
+            <br/>
+            <p>
+            &mdash; Sunday afternoon check-in of new residents. Presentation and lunch with current residents. Sunday evening check-out of previous residents.
+            <br/>
+            &mdash; Daily morning check-ins on Monday through Saturday
+            </p>
+
+        </div>
+
+        <div id="space">
+            <p>
+            The residency space is a two bedroom loft with abundant sunlight and soaring ceilings. We are located in Bushwick, Brooklyn between the Jefferson L stop and Myrtle-Broadway M stop.
+            <br/><br/>
+            The downstairs private bedroom contains a queen size bed, extremely tall windows, and a large closet. The upstairs shared bedroom contains twin size bunk beds, a closet, and a patio.
+            <br/><br/>
+            The loft is equipped with a fully equipped kitchen, a decadent library with a focus on tech, and plenty of workspace for creation and collaboration.
+            <br/><br/>
+            We are close to lots of cheap late night eats like Archies, Taqueria Sofia, Green Street Salads, and City Fresh Market.
+            <br/><br/>
+
+            Well renowned and/or experienced creatives may apply for the private bedroom. Creatives in the earlier stages of their career may apply for one of the two bunks in the shared room.
+            </p>
+        </div>
+
+        <div id="gallery">
+            <img src="photos/outside.jpg"/>
+            <img src="photos/commons.jpg"/>
+            <img src="photos/commons2.jpg"/>
+            <img src="photos/bath.jpg"/>
+            <img src="photos/bunks.jpg"/>
+            <img src="photos/kitchen.jpg"/>
+            <img src="photos/laundry.jpg"/>
+        </div>
+
+        <div id="apply">
+            <p>
+                To apply, please send answers to the followings questions to <a href="mailto:residency@invisible.college">residency@invisible.college</a>
+            </p>
+            <ul>
+                <li>1. What one or two week project (new or existing) would you like to work on at the Invisible College? Be specific and concrete.</li>
+                <li>2. Imagine you're writing a blog post to tell the world about your work, displayed on Invisible College website. What would it describe? What photos / videos / sound recordings / interactive demos would it have?</li>
+                <li>3. Imagine you're sharing your work with fellow residents at the end of each week and speaking for about 10 minutes. What would you say / present / demo?</li>
+                <li>4. Who's a master in your field that you admire and why?</li>
+                <li>5. Tell us about your past work. We love links to your social media and web presences: e.g, artists/designers => instagram, writers => blog, coders => github / demo links, musicians => soundcloud/bandcamp.</li>
+                <li>6. Where would you present this work after leaving Invisible College? (Meetup, conference, performance, publication). (p.s. we love receiving postcards from residents) </li>
+            </ul>
+
+            <p style="text-align: center; ">Thank you for your interest, and best of luck!</p>
+        </div>
+
+
+        <!-- PhotoSwipe Boilerplate -->
+
+        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+            <!-- Background of PhotoSwipe.
+                 It's a separate element as animating opacity is faster than rgba(). -->
+            <div class="pswp__bg"></div>
+
+            <!-- Slides wrapper with overflow:hidden. -->
+            <div class="pswp__scroll-wrap">
+
+                <!-- Container that holds slides.
+                    PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                    Don't modify these 3 pswp__item elements, data is added later on. -->
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+
+                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                <div class="pswp__ui pswp__ui--hidden">
+
+                    <div class="pswp__top-bar">
+
+                        <!--  Controls are self-explanatory. Order can be changed. -->
+
+                        <div class="pswp__counter"></div>
+
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                        <!-- element will get class pswp__preloader--active when preloader is running -->
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                              <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button>
+
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button>
+
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--  End PhotoSwipe Boilerplate  -->
+
+    <script src="etc/photoswipe.js"></script>
+    <script src="etc/photoswipe-ui-default.js"></script>
+    <script>
+    'use strict'
+    var pswpElement = document.querySelector('.pswp');
+    var slides = [
+        {
+            src: 'photos/outside.jpg',
+            w: 2000,
+            h: 2668,
+            title: 'View from Upper Patio'
+        },
+
+        {
+            src: 'photos/commons.jpg',
+            w: 2000,
+            h: 2688,
+            title: 'The main workspace and library'
+        },
+
+        {
+            src: 'photos/commons2.jpg',
+            w: 2000,
+            h: 2688,
+            title: 'The cozier view of the commons'
+        },
+
+        {
+            src: 'photos/bath.jpg',
+            w: 2000,
+            h: 2688,
+            title: 'Bathroom'
+        },
+
+        {
+            src: 'photos/bunks.jpg',
+            w: 2000,
+            h: 1499,
+            title: 'Upstairs shared bedroom'
+        },
+
+        {
+            src: 'photos/kitchen.jpg',
+            w: 2000,
+            h: 2668,
+            title: 'The kitchen.'
+        },
+
+        {
+            src: 'photos/laundry.jpg',
+            w: 2000,
+            h: 1417,
+            title: 'Laundry is next door.'
+        }
+    ];
+
+    var gallery = document.querySelector("#gallery");
+    var images = gallery.querySelectorAll("img");
+
+    // Override some default settings
+//    PhotoSwipeUI_Default.captionEl = false;
+//    PhotoSwipeUI_Default.shareEl = false;
+//    PhotoSwipeUI_Default.arrowEl = false;
+
+    images.forEach( (img, index) => {
+        img.addEventListener("click", () => {
+            let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, slides, {
+                index,
+                captionE: false,
+                shareEl: false,
+                arrowEl: false
+            });
+            gallery.init();
+        });
+    });
+    </script>
+</body>
+</html>

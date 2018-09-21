@@ -1,0 +1,30 @@
+<script type="statebus">
+dom.BODY = ->
+  artists = fetch('/residency/artists') or []
+
+  DIV {},
+    HEADER()
+    TITLE 'Artmakers at Invisible College Residency'
+    STYLE '''body {
+               padding: 20px;
+               marginBottom: 50px;
+               font: 18px 'Muli', sans-serif;
+             }'''
+
+    DIV fontWeight: 'bold', fontSize: 40, 'Artmakers at Invisible College'
+    DIV color: "#555", "A crazy machine for making art"
+
+    for artist in artists.list
+          name = artist.name
+          console.log(JSON.stringify(artist))
+
+          P {},
+            if artist.url then A href: artist.url, name else name
+            IMG
+              src: artist.photo
+            BR()
+            artist.description
+#</script><script src="https://stateb.us/client6.js" server=state://invisible.college></script>
+<script src="https://invisible.college/client/common.coffee"></script>
+<link href="https://fonts.googleapis.com/css?family=Ovo|Muli:300" rel=stylesheet type=text/css>
+<meta name="viewport" content="width=device-width, initial-scale=1" />

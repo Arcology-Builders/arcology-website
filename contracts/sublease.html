@@ -97,14 +97,13 @@ below, conditioned on full payment of the amounts below by
 <div class="type-monthly" style="display: none;">
 The Lease is a <span class="monthlyType blank"></span> commencing with a move-in date on
 <span class="moveInDate blank"></span>.
+</div>
 
 <div class="type-month-to-month" style="display: none;">
 The Lease will continue month-to-month
   until the Sublessee terminates the lease, giving a
 minimum notice of <span class="noticeDays blank"></span> days. At the latest, the Sublessee agrees
 to vacate the premises on the move out date of <span class="finalMoveOutDate blank"></span>.
-</span>
-
 </div>
 
 <div>
@@ -168,6 +167,10 @@ Sublessee will pay a total amount of <span class="totalAmount blank"></span>
     </li>
   </ol>
 
+  <div class="oneTimeAmountNumber- blank">
+    Finally, there is a One Time Amount of <span class="oneTimeAmount bank"></span> for <span class="oneTimeAmountReason blank"></span>.
+  </div>
+
   Initally the Sublessee will pay the Move-In Amount of
   <span class="moveInAmount blank"></span> equal to the sum of all the previous
   amounts, which includes the first month's rent.
@@ -221,6 +224,10 @@ This contract subsumes the previous contract with ID
 and carries forward any security deposit from it.
 </div>
 
+<div class="returnAmountReason- blank">
+Finally, the following amount of <span class="returnAmount blank"></span> will be paid to the Sublessee for <span class="returnAmountReason blank"></span> upon Move Out.
+</div>
+
 ## <span class="header">Staking and Shares</span>
 
 This section is aspirational and has not been implemented yet in house software.
@@ -253,14 +260,20 @@ The Sublessor agrees to pay the total amount of
 equal to the Rent Payment plus Security Deposit,
  on the Move-In Date via one of the following methods:
 
-  1. Venmo to the screen name `@paul-pham-7`
-  1. a paper check drawn on a U.S. bank account
-  1. <span class="totalAmountNumber blank"></span> DAI, an ERC20-compliant
+  <ol>
+    <li> Venmo to the screen name `@paul-pham-7`</li>
+    <li> a paper check drawn on a U.S. bank account payable to `Local Box`</li>
+    <li> <span class="totalAmountNumber blank"></span> DAI, an ERC20-compliant
      stablecoin with contract address `0xc94a6e7776bade5da316cf6fd8c751fb0d5c3c5e`,
      payable to the Sublessor at ETH address `0x36E5A96c8d01803d2C48756AA7bde1c01d7D9f8A`
-  1. The equivalent ETH at the current GDAX exchange rate to
-     ETH address `0x36E5A96c8d01803d2C48756AA7bde1c01d7D9f8A`,
-     to be agreed with Sublessor beforehand and valid for one hour.
+    </li>
+    <li>
+      The equivalent ETH at the current GDAX exchange rate to
+      ETH address `0x36E5A96c8d01803d2C48756AA7bde1c01d7D9f8A`,
+      to be agreed with Sublessor beforehand and valid for one hour.
+    </li>
+  </ol>
+
 </div>
 
 <div class="type-monthly" style="display: none;">
@@ -564,6 +577,7 @@ window.addEventListener('load', function() {
           "monthlyTotal");
         validateAmounts(parseInt(params['moveInAmountNumber']),
           parseInt(params['monthlyTotalAmountNumber']) +
+          parseInt(params['oneTimeAmountNumber']) +
           parseInt(params['lastMonthAmountNumber']) +
           parseInt(params['depositAmountNumber']),
           "monthlyMoveIn");

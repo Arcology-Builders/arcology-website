@@ -165,11 +165,11 @@ Sublessee will pay a total amount of <span class="totalAmount blank"></span>
       <span class="depositAmount blank"></span> as a refundable security or
       damage deposit less any of the expenses described in the next section.
     </li>
-  </ol>
-
-  <div class="oneTimeAmountNumber- blank">
+  <li class="oneTimeAmount- blank" style="display: none;">
     Finally, there is a One Time Amount of <span class="oneTimeAmount bank"></span> for <span class="oneTimeAmountReason blank"></span>.
-  </div>
+  </li>
+
+  </ol>
 
   Initally the Sublessee will pay the Move-In Amount of
   <span class="moveInAmount blank"></span> equal to the sum of all the previous
@@ -537,6 +537,12 @@ function generateUsdAmounts(params) {
   }
 }
 
+// Handle undefineds and NaNs
+function parseIntDefault(value) {
+  const numVal = parseInt(value);
+  return (!numVal) ? 0 : numVal;
+}
+
 window.addEventListener('load', function() {
   var urlParams = getJsonFromUrl();
   var fn = urlParams['fn'];
@@ -564,7 +570,7 @@ window.addEventListener('load', function() {
       }
       substitute("preparedDate", new Date().toUTCString().substr(5,11));
       if (params['type'] === "monthly") {
-        if (parseInt(params['noticeDays']) === 0) {
+        if (parseIntDefault(params['noticeDays']) === 0) {
           substitute("monthlyType", params['maxSubleaseMonths'] + "-month");
           showHiddens("type", "monthly-normal");
         } else {
@@ -572,20 +578,20 @@ window.addEventListener('load', function() {
           showHiddens("type", "month-to-month");
         }
         validateAmounts(parseInt(params['monthlyTotalAmountNumber']),
-          parseInt(params['monthlyRentAmountNumber']) +
-          parseInt(params['monthlyCleaningAmountNumber']),
+          parseIntDefault(params['monthlyRentAmountNumber']) +
+          parseIntDefault(params['monthlyCleaningAmountNumber']),
           "monthlyTotal");
         validateAmounts(parseInt(params['moveInAmountNumber']),
-          parseInt(params['monthlyTotalAmountNumber']) +
-          parseInt(params['oneTimeAmountNumber']) +
-          parseInt(params['lastMonthAmountNumber']) +
-          parseInt(params['depositAmountNumber']),
+          parseIntDefault(params['monthlyTotalAmountNumber']) +
+          parseIntDefault(params['oneTimeAmountNumber']) +
+          parseIntDefault(params['lastMonthAmountNumber']) +
+          parseIntDefault(params['depositAmountNumber']),
           "monthlyMoveIn");
       } else {
         validateAmounts(parseInt(params['totalAmountNumber']),
-          parseInt(params['rentAmountNumber']) +
-          parseInt(params['cleaningAmountNumber']) +
-          parseInt(params['depositAmountNumber']),
+          parseIntDefault(params['rentAmountNumber']) +
+          parseIntDefault(params['cleaningAmountNumber']) +
+          parseIntDefault(params['depositAmountNumber']),
           "daysTotal");
       }
     });

@@ -1,0 +1,301 @@
+<head>
+    <meta charset="utf-8">
+    <title>The Artists | Invisible College AiR</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+</head>
+
+<style>
+
+#artist-menu a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin: 10px;
+    display: block;
+
+}
+
+.artist-wrap {
+    position: relative;
+    width: 60vw;
+    margin: 7vh auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+        align-items: center;
+    opacity: 0;
+}
+
+.artist-wrap .artist {
+    width: 100%;
+    box-shadow: 0px 3px 6px rgba(33, 33,33,.1);
+}
+
+.artist-cover {
+    height: 80px;
+    width: 100%;
+}
+
+.artist-photo-wrap {
+    position: relative;
+    max-width: 300px;
+    transition: transform 900ms ease;
+    margin: 0 auto;
+}
+
+.artist-photo {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+}
+
+.artist-name {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.artist-info-wrap {
+    margin: 0;
+    border: 1px solid #eee;
+    width: 100%;
+}
+
+.artist-headline {
+    padding: 10px 15px;
+    letter-spacing: .8px;
+    font-size: 22px;
+}
+
+.artist-description {
+    padding: 10px 15px;
+    display: none;
+}
+
+
+/* Thanks https://www.cssfontstack.com/Helvetica */
+h1 {
+	font-family: Helvetica Neue, Helvetica,  'Nunito', sans-serif;
+	font-size: 23px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 23px;
+}
+h3 {
+	font-family: Helvetica Neue, Helvetica,  'Nunito', sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 23px;
+}
+p,
+a {
+	font-family: Helvetica Neue, Helvetica,  'Nunito', sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}
+blockquote {
+	font-family: Helvetica Neue, Helvetica,  'Nunito', sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}
+pre {
+	font-family: Helvetica Neue, Helvetica,  'Nunito', sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}
+.bold {
+    font-weight: bolder;
+}
+
+.read-more,
+.artist-headline {
+    text-align: center;
+}
+
+
+</style>
+
+<body>
+    <h1>The Artists</h1>
+    <div id="artists"></div>
+</body>
+
+<script>
+'use strict'
+
+var usedColors = [];
+var fadeTime = 400;
+
+var artists = [
+    {
+        "name": "Latasha Alcindor",
+        "photo": "",
+        "headline": "Hip hop artist and designer taking rhythm to the next level.",
+        "color": getColor(),
+        "description": filler(),
+    },
+    {
+        "name": "Thomas Ringstrom",
+        "photo": "",
+        "headline": "Behavior is a pattern we can quantify.",
+        "color": getColor(),
+        "description": filler()
+    },
+    {
+        "name": "Paras Memon",
+        "photo": "",
+        "headline": "Preserverance and empowerment through comic books.",
+        "color": getColor(),
+        "description": filler()
+    },
+    {
+        "name": "Ringo 24b",
+        "photo": "",
+        "headline": "Old skool, nu beats",
+        "color": getColor(),
+        "description": filler()
+    },
+    {
+        "name": "Lenny Oiler",
+        "photo": "",
+        "headline": "Imagination out of this dimension",
+        "color": getColor(),
+        "description": filler()
+    }
+];
+
+function filler() {
+    return "Bits of moving fluff. Two ghostly white figures in coveralls and helmets are soflty dancing the carbon in our apple pies light years, kindling the energy hidden in matter radio telescope sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam rings of Uranus made in the interiors of collapsing stars trillion radio telescope tesseract with pretty stories for which there's little good evidence the carbon in our apple pies consectetur adipisicing elit? Laws of physics Jean-Francois Champollion quasar astonishment, Sea of Tranquility. Vastness is bearable only through love lorem ipsum dolor sit amet and billions upon billions upon billions upon billions upon billions upon billions upon billions.";
+}
+
+function getColor() {
+    let colors = ['#9CFFFA', '#ACF39D', '#BCE7FD',  '#24FF9D', '#F9C507'];
+    colors = ['#98dafc', '#b0aac2', '#f2efe8', '#c2d4d8', '#dbe9d8'];
+
+    let color = colors[Math.floor(Math.random() * 100 * colors.length) % colors.length];
+
+    if (usedColors.length === colors.length) usedColors = [];
+
+    if (usedColors.indexOf(color) !== -1) return getColor();
+
+    usedColors.push(color);
+
+    return color;
+}
+
+function createArtist(artist) {
+    return `
+        <div class="artist" data-index="${artist.index}" id="artist-${artist.index}">
+
+            <div class="cover" style="background-color: ${artist.color}">
+                <div class="artist-photo-wrap">
+                    <img class="artist-photo" src="${artist.photo}"/>
+                    <h3 class="artist-name" style="background-color: ${artist.color}" >${artist.name}</h3>
+                </div>
+            </div>
+
+            <div class="artist-info-wrap">
+                <p class="artist-headline">${artist.headline}</p>
+                <p class="read-more" data-name="${artist.name}">More</p>
+                <p class="artist-description" id="${artist.name}-descr">${artist.description}</p>
+            </div>
+        </div>`
+}
+
+function showArtists(artists) {
+    if (typeof artists !== 'object') return;
+    let container = document.getElementById("artists");
+    let arr = [];
+
+    artists.forEach( (artist, idx) => {
+        let wrap = document.createElement("div");
+        let src = "https://picsum.photos/" + (300 + idx * 50).toString();
+
+        artist.photo = src;
+        artist.index = idx;
+
+        let html = createArtist(artist);
+
+        wrap.className = "artist-wrap";
+        wrap.innerHTML = html;
+        container.appendChild(wrap);
+        setTimeout( () => {
+            fadeIn(wrap);
+        }, fadeTime * idx);
+    });
+}
+
+function isHidden(el) {
+    return (el.offsetParent === null);
+}
+
+function fadeIn(el) {
+    let opacity = parseInt(window.getComputedStyle(el).opacity);
+
+    let interval = setInterval( () => {
+        if (opacity > 0.99) clearInterval(interval);
+        opacity += 0.01;
+        el.style.opacity = opacity;
+    });
+}
+
+function toggleDescription(e) {
+    let target = e.target;
+    let name = target.dataset["name"];
+    let descr = document.getElementById(name + "-descr");
+    descr.style.display = isHidden(descr) ? "block" : "none";
+}
+
+function randOffsetCenter(el, prev) {
+    let amt = rand(-60, 40) - prev;
+    el.style.transform = `translateX(${amt}%)`;
+    return amt;
+}
+
+function rand(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function showMenu(artists) {
+    let menu = document.createElement("div");
+    menu.setAttribute("id", "artist-menu");
+
+    artists.forEach( (artist, index) => {
+        let anchor = document.createElement("a");
+        anchor.href = `#artist-${index}`;
+        anchor.textContent = artist.name;
+        menu.appendChild(anchor);
+    });
+
+    document.getElementById("artists").appendChild(menu);
+}
+
+showMenu(artists);
+showArtists(artists);
+
+document.querySelectorAll(".read-more").forEach(trigger => trigger.addEventListener("click", toggleDescription, false));
+
+var photos = document.querySelectorAll(".artist-photo-wrap");
+photos.forEach( (photo, idx) => {
+    let prevOffset = 0;
+    setTimeout( () => {
+        prevOffset = randOffsetCenter(photo, prevOffset);
+    }, idx * fadeTime);
+});
+
+</script>

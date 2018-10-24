@@ -1,7 +1,7 @@
 {
-  "name": "node-demo",
+  "name": "arcology-website",
   "version": "1.0.0",
-  "description": "Node.js demo project",
+  "description": "Website and SSB data backend for the NYC Arcology",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
@@ -9,17 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ppham/node-demo.git"
+    "url": "git@github.com:invisible-college/arcology-website.git"
   },
   "author": "Paul Pham",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ppham/node-demo/issues"
+    "url": "https://github.com/invisible-college/arcology/issues"
   },
-  "homepage": "https://github.com/ppham/node-demo",
+  "homepage": "https://arcology.nyc",
   "private": "true",
   "dependencies": {
-    "express": "^4.12.0",
-    "npm": "^6.1.0"
+    "express": "^4.16.4",
+    "npm": "^6.4.1",
+    "scuttlebot": "^13.0.1"
   }
 }

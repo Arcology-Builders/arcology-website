@@ -1,0 +1,92 @@
+/* pointer on hover over tri-column boxes */
+.pointer {cursor: pointer;}
+
+/* background on top panel */
+.ui.inverted.segment.colheading{
+    background: url(https://images.unsplash.com/photo-1414058862086-136de6c98e99?dpr=1&auto=format&fit=crop&w=1080&h=721&q=80&cs=tinysrgb&crop=) no-repeat center center scroll;
+    background-size: cover;
+}
+
+.colp1{
+    background: url('../images/backgroundAndroid.png') no-repeat center center scroll;
+    background-size: cover;
+    opacity: 1;
+}
+
+.colp2{
+    background: url('../images/backgroundEthereum.png') no-repeat center center scroll;
+    background-size: cover;
+    opacity: 1;
+}
+
+.colp3{
+    background: url('../images/backgroundNode.png') no-repeat center center scroll;
+    background-size: cover;
+    opacity: 1;
+}
+
+.colp4{
+    background: url('../images/backgroundOdds.png') no-repeat center center scroll;
+    background-size: cover;
+    opacity: 1;
+}
+
+/* border around top menue bar */
+.ui.secondary.inverted.pointing.menu.colborder{
+    border-color: rgba(255, 255, 254, 0);
+}
+
+/* text on top menue bar */
+.ui.secondary.inverted.menu a.item.coltext{
+    color: rgba(14, 18, 34, 1)!important;
+}
+
+/* text on top menue bar hover */
+.ui.secondary.inverted.menu a.item.coltext:hover{
+    font-weight: bold !important;
+    color: rgba(14, 18, 34, 1)!important;
+}
+
+/* border around top menue bar once scrolling*/
+.ui.secondary.inverted.pointing.menu.colborder.colscrolling{
+    background-color: #ffffff;
+}
+
+.colcolor {
+    color: rgba(1, 21, 51, 0.87) !important;
+}
+
+.ui.header.coltext {
+    color: rgba(1, 21, 51, 0.87) !important;
+}
+
+body {
+    color: rgba(1, 21, 51, 0.87) !important;
+}
+
+.ui.button{
+    color: rgba(1, 21, 51, 0.87) !important;
+}
+
+.ui.inverted.segment.colcolor, .ui.primary.inverted.segment.colcolor {
+    background: #010b16;
+    color: rgba(255,255,255,.9);
+}
+
+.ui.text.container.colcontainer{
+    max-width: 200px!important;
+}
+
+.ui.inverted.segment, .ui.primary.inverted.segment {
+    background: #1b1c1d;
+    color: rgba(255,255,255,.9);
+}
+
+p.colparagraph{
+    max-width: 400px;
+}
+
+/* this was for the grey shaded background but it ruins the icon boxes
+.ui.vertical.segment {
+    background: none #00000005 !important;
+} */

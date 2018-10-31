@@ -4,8 +4,9 @@
   "description": "Website and SSB data backend for the NYC Arcology",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "test"
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "test:watch": "npm run test -- --watch",
+    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,31 @@
   },
   "homepage": "https://arcology.nyc",
   "private": "true",
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "npm": "^6.4.1",
-    "scuttlebot": "^13.0.1"
+    "scuttlebot": "^13.0.1",
+    "babel-preset-stage-1": "^6.1.18",
+    "lodash": "^3.10.1",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "prop-types": "^15.6.1",
+    "react-animate-height": "^2.0.1",
+    "react-chronos": "^1.0.5",
+    "react-router": "^2.0.1",
+    "react-scroll": "1.7.7",
+    "react-timeline-semantic-ui": "^1.0.12",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.1"
   }
 }

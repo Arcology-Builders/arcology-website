@@ -7,29 +7,6 @@
     background-size: cover;
 }
 
-.colp1{
-    background: url('../images/backgroundAndroid.png') no-repeat center center scroll;
-    background-size: cover;
-    opacity: 1;
-}
-
-.colp2{
-    background: url('../images/backgroundEthereum.png') no-repeat center center scroll;
-    background-size: cover;
-    opacity: 1;
-}
-
-.colp3{
-    background: url('../images/backgroundNode.png') no-repeat center center scroll;
-    background-size: cover;
-    opacity: 1;
-}
-
-.colp4{
-    background: url('../images/backgroundOdds.png') no-repeat center center scroll;
-    background-size: cover;
-    opacity: 1;
-}
 
 /* border around top menue bar */
 .ui.secondary.inverted.pointing.menu.colborder{

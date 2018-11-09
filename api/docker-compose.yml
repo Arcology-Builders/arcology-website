@@ -1,0 +1,12 @@
+# this is here for debugging purposes.
+# if you want to run the API server alone and exposed infront of the nginx server.
+version: '3'
+services:
+  col_api:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+

@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "body-parser": "*",
+    "cors": "2.8.4",
+    "envvar": "1.1.x",
+    "express": "4.16.3",
+    "mysql": "^2.16.0",
+    "react-event-calendar": "^0.3.0",
+    "winston": "^3.1.0",
+    "winston-daily-rotate-file": "^3.3.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "filebeat": "filebeat-6.4.2-darwin-x86_67/filebeat -c ./filebeat-6.4.2-darwin-x86_67/filebeat.yml"
+  }
+}

@@ -9,7 +9,7 @@ import HomepageLayout from './components/HomepageLayout';
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <HomepageLayout />
-  </Provider>
-  , document.getElementById("root"));
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <HomepageLayout />
+    </Provider>
+    , document.getElementById("root"));

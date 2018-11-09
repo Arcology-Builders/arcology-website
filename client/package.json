@@ -1,0 +1,31 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "babel-preset-stage-1": "^6.1.18",
+    "lodash": "^3.10.1",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-redux": "5.0.7",
+    "react-router": "^2.0.1",
+    "redux": "4.0.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.1",
+    "react-scroll": "1.7.7",
+    "react-animate-height": "^2.0.1",
+    "axios": "0.18.0",
+    "moment": "^2.22.2",
+    "mysql": "^2.15.0",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "1.1.4",
+    "redux-promise": "^0.5.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

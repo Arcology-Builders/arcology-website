@@ -11,15 +11,15 @@ export default class HostsSeg extends Component {
                     <Grid container verticalAlign='middle'>
                         <Grid.Row>
                             <Grid.Column>
-                                <Header className="colcolor" as='h3' style={{ fontSize: '2em' }}>Meet Your Hosts</Header>
+                                <Header className="colcolor" as='h3' style={{ fontSize: '2em' }}>Meet Our Team</Header>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                    <Grid columns={3}>
+                    <Grid columns={1}>
                         <Grid.Row>
-                            {this._getHeadShot("images/melissa.png", "Melissa Nyomi", "Host desc")}
+                            {/* {this._getHeadShot("images/melissa.png", "Melissa Nyomi", "Host desc")} */}
                             {this._getHeadShot("images/paul.png", "Paul Pham", "Chief Arcologist, Developer")}
-                            {this._getHeadShot("images/bob.png", "Host", "Host desc")}
+                            {/* {this._getHeadShot("images/bob.png", "Host", "Host desc")} */}
                         </Grid.Row>
                     </Grid>
                 </Segment>

@@ -1,0 +1,40 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: arcology
+      MYSQL_DATABASE: arcology
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - '3050:80'
+    depends_on:
+      - client
+      - api
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+  api:
+    restart: always
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    depends_on: 
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=arcology
+      - MYSQL_NAME=arcology

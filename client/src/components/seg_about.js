@@ -15,7 +15,10 @@ export default class AboutSeg extends Component {
                                     <Header className="colcolor" as='h3' style={{ fontSize: '2em' }}>About Arcology</Header>
                                     <div className="colcolor" style={{ fontSize: '1.33em' }}>
                                         <p>Live, play, and work with a community of entrepreneurs, artists, musicians, hackers, makers, crafters, scientists, researchers, and engineers.</p>
-                                        <p>Named after Paolo Soleri's integrated architecture and ecology at Arcosanti, Arcology draws inspiration from a magical purple nerd castle at MIT, Black Rock City, Woodard Lane Cohousing, the Israeli moshav at Nahalal, the Buddhist community home Marpa House, and the great work from SimCity.</p>
+                                        <p>Named after Paolo Soleri's integrated architecture and ecology at <a href='https://arcosanti.org/' target="_blank">Arcosanti</a>, Arcology draws inspiration from a
+                                        <a href='http://tep.mit.edu/' target="_blank"> magical purple nerd castle at MIT</a>, <a href='https://burningman.org/' target="_blank">Black Rock City</a>,
+                                        <a href='http://www.woodardlanecoho.org/' target="_blank"> Woodard Lane Cohousing</a>,
+                                        the <a href='https://en.wikipedia.org/wiki/Nahalal' target="_blank"> Israeli moshav at Nahalal</a>, the Buddhist community home <a href='https://marpa-house.org/' target="_blank">Marpa House</a>, and the great work from <a href='https://www.youtube.com/watch?v=kBMMRzK8KqE' target="_blank">SimCity</a>.</p>
                                         <p>Our goal is an inter-generational landship to cultivate tribes of happy humans.e bit of body text</p>
                                     </div>
                                 </Grid.Column>

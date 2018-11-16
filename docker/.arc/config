@@ -1,0 +1,11 @@
+{
+  "caps": {
+    "shs": "7JdTg29Ug02k6ZDyQxKLcDBfKDwCa6SLB4XESxn1WsY=",
+    "sign": "TlJPEwT3dV16E6YCokoPK4YrY6EYhG695GdDkSDWcTw="
+  },
+  "port": 8007,
+  "ws": {
+    "port": 8988
+  },
+  "ssb_appname": "arc"
+}

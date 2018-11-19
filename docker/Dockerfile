@@ -8,7 +8,8 @@ RUN pacman -Sy && \
     echo "Y" | pacman -Sy git && \
     echo "Y" | pacman -Sy neovim && \
     echo "Y" | pacman -Sy openssh && \
-    echo "Y" | pacman -Sy net-tools
+    echo "Y" | pacman -Sy net-tools && \
+    echo "Y" | pacman -Sy tmux
 
 RUN mkdir -p /src
 RUN cd /src; git clone https://github.com/invisible-college/arcology-website.git
@@ -26,8 +27,13 @@ RUN . /root/.bashrc
 #RUN . ~/.nvm/nvm.sh && ssb_appname="arc" /src/arcology-website/bin/scuttlebot whoami
 ADD .arc /root/.arc
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -N "" 
+#RUN sed -i.bak "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen
+#RUN locale-gen
+#RUN tmux -c ' . ~/.nvm/nvm.sh && ssb_appname="arc" /src/arcology-website/bin/scuttlebot server'
 
-ENTRYPOINT . ~/.nvm/nvm.sh && ssb_appname="arc" /src/arcology-website/bin/scuttlebot server
+RUN nohup /root/.nvm/versions/node/v8.12.0/bin/scuttlebot server &
+
+ENTRYPOINT echo $ROLE; /root/.nvm/versions/node/v8.12.0/bin/node /src/arcology-website/ssb/enter-bill.js
 
 EXPOSE 8007
 EXPOSE 8988

@@ -7,21 +7,33 @@ RUN pacman -Sy && \
     echo "Y" | pacman -Sy python2 && \
     echo "Y" | pacman -Sy git && \
     echo "Y" | pacman -Sy neovim && \
-    echo "Y" | pacman -Sy openssh
+    echo "Y" | pacman -Sy openssh && \
+    echo "Y" | pacman -Sy net-tools && \
+    echo "Y" | pacman -Sy tmux
 
 RUN mkdir -p /src
 RUN cd /src; git clone https://github.com/invisible-college/arcology-website.git
+RUN cd /src; git clone https://github.com/ssbc/ssb-viewer.git
+RUN cd /src; git clone https://github.com/ssbc/docs.git
 # Need to create a shell profile file first, so nvm has something to load into
 RUN touch ~/.profile
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 RUN . ~/.nvm/nvm.sh && nvm install v8.12.0
 RUN cd /src/arcology-website; . ~/.nvm/nvm.sh && npm install
 RUN mkdir -p /src/arcology-website/bin
-RUN cd /src/arcology-website; ln -s ./node_modules/scuttlebot/bin.js ./bin/scuttlebot; chmod +x ./bin/scuttlebot
-ADD .bashrc ~/.bashrc
-ADD config ~/.arc/config
+RUN cd /src/arcology-website/bin; ln -s ../node_modules/scuttlebot/bin.js ./scuttlebot; chmod +x ./scuttlebot
+ADD .bashrc /root/.bashrc
+RUN . /root/.bashrc
+#RUN . ~/.nvm/nvm.sh && ssb_appname="arc" /src/arcology-website/bin/scuttlebot whoami
+ADD .arc /root/.arc
+RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -N "" 
+#RUN sed -i.bak "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen
+#RUN locale-gen
+#RUN tmux -c ' . ~/.nvm/nvm.sh && ssb_appname="arc" /src/arcology-website/bin/scuttlebot server'
 
-ENTRYPOINT ssh-keygen -t rsa -f ~/.ssh/id_rsa -N "" && /bin/bash
+RUN nohup /root/.nvm/versions/node/v8.12.0/bin/scuttlebot server &
+
+ENTRYPOINT echo $ROLE; /root/.nvm/versions/node/v8.12.0/bin/node /src/arcology-website/ssb/enter-bill.js
 
 EXPOSE 8007
 EXPOSE 8988

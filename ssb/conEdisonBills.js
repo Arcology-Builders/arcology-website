@@ -3,13 +3,14 @@ const { Map, List } = require('immutable')
 function createObj(params) {
   return {
     type: 'ledger',
-    amountNumber: params['amountNumber'],
+    amountNumber: String(params['amountNumber']),
     amountCurrency: 'USD',
     payee: 'Con Edison',
     description: params['description'],
     fromAcct: 'Bank of America',
     toAcct: 'Arcology:Expenses:Electricity',
     txDate: params['txDate'],
+    txTime: new Date(params['txDate']).getTime(),
     billEndDate: params['billEndDate'], 
     billStartDate: params['billStartDate'],
     billAccountNumber: params['billAccountNumber'],

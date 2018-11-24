@@ -18,10 +18,20 @@ function computeSum(txs) {
 	  return Math.max(val['txTime'], sum)
   }, 0,
   )
+
+  function commonAccount(keyName) {
+    return txs.reduce((sum, val, key) => {
+      let commonAccount = (val[keyName] === sum || sum === "") ? val[keyName] : "";
+      return commonAccount
+    }, "",
+  )}
+
   return {
     currencies: currencies,
     startDate: startDate,
-    endDate: endDate
+    endDate: endDate,
+    fromAccount: commonAccount('fromAccount'),
+    toAccount: commonAccount('toAccount'),
   }
 }
 

@@ -1,5 +1,12 @@
 const { Map } = require('immutable')
 
+const PRECISION_MAP = new Map({
+	'USD': 2,
+	'ETH': 18,
+	'DAI': 18,
+})
+
+
 function createSumObj(params) {
   return {
     startTime: params['startTime'],
@@ -12,12 +19,14 @@ function createSumObj(params) {
 
 // txs is a List of JSON objects, which represent
 // the msg.content.value of a SSB message.
-function computeSum(txs) {
+function computeSum(txs, precisionMap = PRECISION_MAP) {
   sumsMap = txs.reduce((sum, val, key) => {
     let txCurrency = val['amountCurrency'],
-        txAmount = Number(val['amountNumber']);
-        prevAmount = Math.max(sum.get(txCurrency, 0), 0);
-    return sum.set(txCurrency, prevAmount + txAmount)
+        txAmount = Number(val['amountNumber']),
+	precisionPow = Math.pow(10, precisionMap.get(txCurrency)),
+        prevAmount = Math.max(sum.get(txCurrency, 0), 0),
+	newSum = Math.round((prevAmount + txAmount)*precisionPow)/precisionPow;
+    return sum.set(txCurrency, newSum)
   }, new Map({}),
   )
   startDate = txs.reduce((sum, val, key) => {
@@ -46,6 +55,6 @@ function computeSum(txs) {
 }
 
 module.exports = {
-	computeSum: computeSum,
-	createSumObj: createSumObj,
+  computeSum: computeSum,
+  createSumObj: createSumObj,
 }

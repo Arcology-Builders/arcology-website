@@ -1,9 +1,19 @@
 const { Map } = require('immutable')
 
+function createSumObj(params) {
+  return {
+    startTime: params['startTime'],
+    endTime: params['endTime'],
+    fromAccount: params['fromAccount'],
+    toAccount: params['toAccount'],
+    sumsMap: params['sumsMap'],
+  }
+}
+
 // txs is a List of JSON objects, which represent
 // the msg.content.value of a SSB message.
 function computeSum(txs) {
-  currencies = txs.reduce((sum, val, key) => {
+  sumsMap = txs.reduce((sum, val, key) => {
     let txCurrency = val['amountCurrency'],
         txAmount = Number(val['amountNumber']);
         prevAmount = Math.max(sum.get(txCurrency, 0), 0);
@@ -27,12 +37,15 @@ function computeSum(txs) {
   )}
 
   return {
-    currencies: currencies,
-    startDate: startDate,
-    endDate: endDate,
+    sumsMap: sumsMap,
+    startTime: startDate,
+    endTime: endDate,
     fromAccount: commonAccount('fromAccount'),
     toAccount: commonAccount('toAccount'),
   }
 }
 
-module.exports = computeSum
+module.exports = {
+	computeSum: computeSum,
+	createSumObj: createSumObj,
+}

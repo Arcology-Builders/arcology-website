@@ -14,7 +14,8 @@ function createObj(params) {
     billEndDate: params['billEndDate'], 
     billStartDate: params['billStartDate'],
     billAccountNumber: params['billAccountNumber'],
-    subtype: 'bill'
+    subtype: 'tx',
+    isBill: true,
   }
 }
 

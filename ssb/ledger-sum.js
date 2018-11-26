@@ -14,6 +14,8 @@ function createSumObj(params) {
     fromAccount: params['fromAccount'],
     toAccount: params['toAccount'],
     sumsMap: params['sumsMap'],
+    type: 'ledger',
+    subtype: 'sum',
   }
 }
 
@@ -45,13 +47,13 @@ function computeSum(txs, precisionMap = PRECISION_MAP) {
     }, "",
   )}
 
-  return {
+  return createSumObj({
     sumsMap: sumsMap,
     startTime: startDate,
     endTime: endDate,
     fromAccount: commonAccount('fromAccount'),
     toAccount: commonAccount('toAccount'),
-  }
+  })
 }
 
 module.exports = {

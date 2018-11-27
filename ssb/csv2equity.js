@@ -36,7 +36,6 @@ class TransactionFromCSV {
     this.fromAccount = params['fromAccount']
     this.toAccount = params['toAccount']
     const predictedAccount = predictAccount(params)
-    console.log(`THE WINNER IS: ${predictedAccount}`)
     this.fromAccount = (this.type === 'credit') ? predictedAccount : BASE_ACCOUNT
     this.toAccount = (this.type === 'debit') ? predictedAccount : BASE_ACCOUNT
   }
@@ -59,58 +58,104 @@ class TransactionFromCSV {
     let month = this.date.getUTCMonth()+1 // 0 based
     let day = this.date.getUTCDay()+1 // 0 based
     return `${year}/${month}/${day} ${this.payeeLong}
-        ${this.fromAccount}        ${this.amount}
-        ${this.toAccount} 
+        ${this.toAccount}        ${this.amount} ${CURRENCY}
+        ${this.fromAccount} 
     `
   }
 }
 
-ACCOUNT_CRITERIA = new OrderedMap({
-  'Arcology:Income:Airbnb':
+ACCOUNT_CRITERIA = new List([
+  ['Arcology:Income:Airbnb',
     new OrderedMap({ // we actually don't need this to be ordered, just reducible
       'payeeLong': /AIRBNB/,
-      'type' : 'credit'
-    }),
-  'Arcology:Expenses:Phone':
+      'type'     : 'credit',
+    })
+  ],
+  ['Arcology:Expenses:Phone',
     new OrderedMap({
       'payeeLong': /SIMPLEMOBILE/,
-      'type' : 'debit'
-    }),
-})
+      'type'     : 'debit',
+    })
+  ],
+  ['Arcology:Expenses:Groceries',
+    new OrderedMap({
+      'payeeLong': /KEY FOOD/,
+      'type'     : 'debit',
+    })
+  ],
+  ['Arcology:Expenses:Groceries',
+    new OrderedMap({
+      'payeeLong': /FOOD BAZA/,
+      'type'     : 'debit',
+    })
+  ],
+  ['Arcology:Expenses:Electricity',
+    new OrderedMap({
+      'payeeLong': /CON ED/,
+      'type'     : 'debit',
+    })
+  ],
+  ['Arcology:Expenses:Supplies',
+     new OrderedMap({
+      'payeeLong': /NEW DOLLAR/,
+      'type'     : 'debit',
+     })
+  ],
+  ['Arcology:Expenses:Supplies',
+     new OrderedMap({
+      'payeeLong': /DALAL 99/,
+      'type'     : 'debit',
+     })
+  ],
+  ['Arcology:Expenses:Rent',
+     new OrderedMap({
+      'payeeLong': /Check/,
+      'type'     : 'debit',
+     })
+  ],
+  ['Arcology:Expenses:Fees',
+     new OrderedMap({
+      'payeeLong': /Check/,
+      'amount'     : '2',
+     })
+  ],
+])
 
 // We predict the given source/destination acct based only on standard params
 // given to constructor of TransactionFromCSV
 function predictAccount(ctorParams) {
   // Find the first (highest-priority) entry that matches to predict the account
   // for this transaction
-  console.log(JSON.stringify(ctorParams))
-  return ACCOUNT_CRITERIA.findEntry(
-    (criteria, account) => {
-      return criteria.reduce((sum, val, key) => {
-	console.log(`${key} ${val}`)
+  const found = ACCOUNT_CRITERIA.find(
+    (criteria) => {
+      return criteria[1].reduce((sum, val, key) => {
         return (sum && ctorParams[key].match(val))
       }, true)
-    }) || "Imbalance"
+    })
+  return (found) ? found[0] : "Imbalance"
 }
 
 // Only do bank-specific munging here.
+// BECU numbers are already strings, we just need to strip the quotes
 // All operations that can be done from standard ctor params should be done in
 // TransactionFromCSV
 function becuLine2tx(tokens) {
-  let creditAmount = tokens[3],
-    debitAmount = tokens[4],
+  let creditAmount = Math.abs(Number(tokens[4])),
+    debitAmount = Math.abs(Number(tokens[3])),
     amount = (creditAmount) ? creditAmount : debitAmount,
     payeeLong = tokens[2],
     type = (creditAmount) ? 'credit' : (debitAmount) ? 'debit' :
 		(console.error(`Zero amount for line ${JSON.stringify(tokens)}`), null);
+    
   return new TransactionFromCSV({
     date: new Date(tokens[0]),
     checkNumber: tokens[1],
     payeeLong: tokens[2],
-    amount: amount,
+    amount: String(amount),
     type: type,
     account: BASE_ACCOUNT,
-    description: tokens[6],
+    remoteAccount: tokens[5], // optional
+    description: tokens[6], // optional
   })
 }
 
@@ -131,7 +176,7 @@ function line2tx(line) {
 // Each line should have a minimum of 5 tokens
 function becuLines(lines) {
   const ledgerLines = List(lines).map((x) => {
-    return x.split(',')
+    return x.split(',').map((y)=>{return y.replace(/\"/g,'')})
   }).filter((x,i) => {
     return (x.length >= 5)
   }).skipWhile((x,i) => {

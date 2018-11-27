@@ -14,7 +14,8 @@ TX_PARAMS = List([
 
 function createTxObj(params) {
   newObj = params
-  TX_PARAMS.forEach((x) => { assert.ok(newObj[x]) })
+  console.log(JSON.stringify(params))
+  TX_PARAMS.forEach((x) => { assert.ok(x in newObj, ` Key ${x} not found`) })
 
   return new Map({
     type: 'ledger',

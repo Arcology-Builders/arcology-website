@@ -1,3 +1,4 @@
+fs = require('fs')
 assert = require('assert')
 const { createTxObj } = require('./ledger-tx')
 const { List, OrderedMap } = require('immutable')
@@ -10,6 +11,7 @@ const { List, OrderedMap } = require('immutable')
 // amount - a positive number represented as a String
 // type - a String which is one of { 'credit', 'debit' }
 // account is the ledger-style base account as a colon-delimited string
+
 class TransactionFromCSV {
 
   constructor(params) {
@@ -20,6 +22,7 @@ class TransactionFromCSV {
     assert.ok(this.type === 'debit' || this.type === 'credit')
     this.fromAccount = params['fromAccount']
     this.toAccount = params['toAccount']
+    this.description = params['description']
     const predictedAccount = predictAccount(params)
     this.fromAccount = (this.type === 'credit') ? predictedAccount : BASE_ACCOUNT
     this.toAccount = (this.type === 'debit') ? predictedAccount : BASE_ACCOUNT
@@ -32,8 +35,8 @@ class TransactionFromCSV {
       amountCurrency: CURRENCY,
       payee: this.payeeLong,
       description: this.description,
-      fromAccount: (type === 'debit') ? BASE_ACCOUNT : this.account,
-      toAccount: (type === 'credit') ? BASE_ACCOUNT : this.account,
+      fromAccount: (this.type === 'debit') ? BASE_ACCOUNT : this.account,
+      toAccount: (this.type === 'credit') ? BASE_ACCOUNT : this.account,
     })
   }
 
@@ -120,6 +123,30 @@ function predictAccount(ctorParams) {
   return (found) ? found[0] : "Imbalance"
 }
 
+// Only do bank-specific munging here.
+// BECU numbers are already strings, we just need to strip the quotes
+// All operations that can be done from standard ctor params should be done in
+// TransactionFromCSV
+function becuLine2tx(tokens) {
+  let creditAmount = Math.abs(Number(tokens[4])),
+    debitAmount = Math.abs(Number(tokens[3])),
+    amount = (creditAmount) ? creditAmount : debitAmount,
+    payeeLong = tokens[2],
+    type = (creditAmount) ? 'credit' : (debitAmount) ? 'debit' :
+		(console.error(`Zero amount for line ${JSON.stringify(tokens)}`), null);
+    
+  return new TransactionFromCSV({
+    date: new Date(tokens[0]),
+    checkNumber: tokens[1],
+    payeeLong: tokens[2],
+    amount: String(amount),
+    type: type,
+    localAccount: BASE_ACCOUNT,
+    remoteAccount: tokens[5], // optional
+    description: tokens[6], // optional
+  })
+}
+
 function line2tx(line) {
   tokens = line.split(",")
   date = new Date(tokens[0])
@@ -132,4 +159,20 @@ function line2tx(line) {
   return new Transaction(new Date(date), payeeShort, payeeLong, amount, type, category, account)
 }
 
-//becuLines(lines)
+// Lines from BECU have a header line at the top
+// and an empty line at the end.
+// Each line should have a minimum of 5 tokens
+function becuLines(lines) {
+  return List(lines).map((x) => {
+    return x.split(',').map((y)=>{return y.replace(/\"/g,'')})
+  }).filter((x,i) => {
+    return (x.length >= 5)
+  }).skipWhile((x,i) => {
+    return (i == 0)
+  }).forEach((x) => {
+    console.log(becuLine2tx(x).toTxObj())
+  })
+  //console.log(ledgerLines)
+}
+
+module.exports = { TransactionFromCSV }

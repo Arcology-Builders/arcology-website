@@ -20,7 +20,7 @@ function createTxObj(params) {
     type: 'ledger',
     txTime: new Date(params['txDate']).getTime(),
     subtype: 'tx',
-  }).merge(newObj)
+  }).merge(newObj).toObject()
 }
 
 module.exports = {

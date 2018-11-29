@@ -1,6 +1,6 @@
 const { List, Set, Map } = require('immutable')
 
-function publishUniques(allMsgs, filterFunc, enterMsgs, sbot) {
+function publishUniques(allMsgs, filterFunc, enterMsgs, nacl, sbot) {
   const enterPairs = Map(enterMsgs.map((x) => List([List(nacl.crypto_hash(JSON.stringify(x))), x])) )
   const enterHashes = Set(enterPairs.keySeq())
   const existMsgs = List(allMsgs).filter(filterFunc)
@@ -15,6 +15,10 @@ function publishUniques(allMsgs, filterFunc, enterMsgs, sbot) {
       console.error(err); console.log(data)
     })
   })
+}
+
+function publish(params) {
+  params['sbot'].publish(params['msg'])
 }
 
 module.exports = {

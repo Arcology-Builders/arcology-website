@@ -4,7 +4,7 @@ const conEdisonBills = require('./conEdisonBills')
 const { computeSum, createSumObj } = require('./ledger-sum')
 const pull = require('pull-stream')
 const { is, Set, Map, List } = require('immutable')
-const { publishUniques } = require('utils')
+const { publishUniques } = require('./utils')
 
 const a = (async() => {
   await nacl.ready;
@@ -20,13 +20,10 @@ a().then(function() {
         console.log(msgs.length);
         if (err) { console.log(err); return }
 	const conEdisonSum = new List([computeSum(conEdisonBills)])
-	publishUniques(msgs, (x)=>{return x.value.content.subtype==='sum'}, conEdisonSum, sbot);
+	publishUniques(msgs, (x)=>{return x.value.content.subtype==='sum'}, conEdisonSum, nacl, sbot);
 	//publishUniques(msgs, (x)=>{return x.value.content.isBill}, conEdisonBills, sbot);
       })
     )
   })
 });
 
-function publish(params) {
-  params['sbot'].publish(params['msg'])
-}

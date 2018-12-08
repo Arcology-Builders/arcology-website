@@ -32,6 +32,7 @@ ADD .bashrc /root/.bashrc
 RUN . /root/.bashrc
 #RUN . ~/.nvm/nvm.sh && ssb_appname="arc" /src/arcology-website/bin/scuttlebot whoami
 ADD .arc /root/.arc
+ADD .arc2 /root/.arc2
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -N "" 
 RUN sed -i.bak "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen
 RUN locale-gen
@@ -44,5 +45,7 @@ RUN locale-gen
 ENTRYPOINT ssb_appname=arc /root/.nvm/versions/node/v11.2.0/bin/node /src/arcology-website/node_modules/scuttlebot/bin.js server
 #ENTRYPOINT sleep 5; echo $ROLE; /root/.nvm/versions/node/v8.12.0/bin/node /src/arcology-website/ssb/enter-bill.js
 
+EXPOSE 8006
+EXPOSE 8987
 EXPOSE 8007
 EXPOSE 8988

@@ -44,7 +44,7 @@ class TransactionFromCSV {
   toLedgerString() {
     let year = this.date.getUTCFullYear()
     let month = this.date.getUTCMonth()+1 // 0 based
-    let day = this.date.getUTCDay()+1 // 0 based
+    let day = this.date.getUTCDate()
     return `${year}/${month}/${day} ${this.payeeLong}
         ${this.toAccount}        ${this.amount} ${CURRENCY}
         ${this.fromAccount} 

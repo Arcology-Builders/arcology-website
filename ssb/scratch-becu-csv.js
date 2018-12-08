@@ -16,4 +16,4 @@ console.log(`Currency ${CURRENCY}`)
 
 const reader = new ReaderBECU(FILENAME, BASE_ACCOUNT, CURRENCY)
 reader.toLedgerStrings().forEach((x) => console.log(x))
-reader.toEquityTxObjs().forEach((x) => console.log(JSON.stringify(x)))
+//reader.toEquityTxObjs().forEach((x) => console.log(JSON.stringify(x)))

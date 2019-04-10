@@ -39,13 +39,13 @@ section header {
 
 section#mainTitle {
     text-align: center;
-    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
     margin-bottom: 50px;
     font: 18px 'Muli', sans-serif;
-    width: 1040px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    height: 500px;
     vertical-align: middle;
     background-image: url("https://images.unsplash.com/photo-1414058862086-136de6c98e99?dpr=1&auto=format&fit=crop&w=1080&h=721&q=80&cs=tinysrgb&crop=");
 }
@@ -55,27 +55,43 @@ section#mainTitle h1 {
     font-size: 128px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 
-section#rooms li {
-    width: 150px;
+section#mainTitle h5 {
+    color: blanchedalmond;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0px;
+}
+
+section#mainTitle p {
+    background-color: rgba(255,255,255,0.8);
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+section#people {
+    padding: 20px;
+    background-color: #09283c;
+}
+
+div.panel {
     float: left;
-    position: relative;
-    padding: 10px;
-    bullet-style: none;
-}
-
-section#rooms li header {
-    font-size: 14px;
-}
-
-section#rooms img {
     width: 100px;
 }
 
-#subheading {
-    background: #061E2F; 
+div.clear {
+    clear: both;
+}
+
+div.panel header {
+    font-size: 24px;
+    color: blanchedalmond;
 }
 
 section#mainTitle h2 {

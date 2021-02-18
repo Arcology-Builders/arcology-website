@@ -1,133 +1,61 @@
-Live, play, and work with a community of entrepreneurs, artists, musicians, hackers,
-makers, crafters, scientists, researchers, and engineers.
+# [Tailwind Toolbox](https://www.tailwindtoolbox.com/) - [Starter Template](https://www.tailwindtoolbox.com/setup)
 
-Named after Paolo Soleri's integrated architecture and ecology at
-[Arcosanti](https://arcosanti.org/), Arcology draws
-inspiration from
-[a magical purple nerd castle at MIT](http://tep.mit.edu/),
-[Black Rock City](https://burningman.org/),
-[Woodard Lane Cohousing](http://www.woodardlanecoho.org/),
-[the Israeli moshav at Nahalal](https://en.wikipedia.org/wiki/Nahalal),
-the <a href="">Buddhist community home Marpa House</a>,
-and the <a href="https://www.youtube.com/watch?v=kBMMRzK8KqE">great work from SimCity</a>.
+It's pretty straight forward to setup [Tailwind CSS](https://www.tailwindcss.com/) and give it a test spin using the CDN version. However, as mentioned on the Tailwind site, you need to setup Tailwind using npm in order to start customising Tailwind.
 
-Our goal is an inter-generational landship to cultivate tribes of happy humans.
+*Note: This starter template is for Tailwind CSS version 1 beta 3 (which is pretty much the [final version](https://twitter.com/adamwathan/status/1108450684783849472))
 
-## Timeline
+If you want the starter template for version 0.7.4, then please [download it from here](https://github.com/tailwindtoolbox/StarterTemplate/archive/v0-7-4.zip)*
 
-### Phase One
+## Setup Guide
+* Download [Node/npm](https://nodejs.org/en/download/)
+* Download the [Tailwind Starter Template](https://github.com/tailwindtoolbox/StarterTemplate/archive/master.zip)
+* Open ```package.json``` and then edit the follow section of the file to match your project
 
-#### (completed)
+```"name": "TailwindStarterTemplate",
+"version": "1.0.0",
+"description": "Tailwind Starter Template",
+"license" : "MIT",
+"repository": {
+    "type" : "git",
+    "url" : "https://github.com/tailwindtoolbox/StarterTemplate.git"
+},
+```
 
-#### 15 June 2016 - 30 April 2018
+Refer to https://docs.npmjs.com/files/package.json for guidance
 
-Minimum liveable product in Bushwick,
-one year prototype. 2 bunks in a shared room, 1 private room. Workspace for two.
-Internet-controlled door buzzer.
+* Open your node command prompt/terminal and navigate to your 'project-name' folder and create the `node_modules` directory
 
-### Phase Two
+   ```npm install or npm update```
 
-#### (in progress)
+* Refresh the Tailwind.js file
 
-#### 1 April 2018 - 30 April 2019
+   ```npm run del:js && npm run create:js```
 
-One year transitional space. 8 bunk beds, 3 private rooms. Three common workspaces.
-Door locks, rent payments, expenses, and future housemates governed by an Ethereum DAO.
-Rooftop garden and apiary.
+* Re-create the initial css file
 
-### Phase Three
+   ```npm run dev:css```
 
-#### (imminent landship)
+* Start building your website using the starter template in the dist folder.
 
-#### 1 December 2018 - indefinitely
 
-L train closes.
-The DAO now owns a 4-story building. 10 bunks in shared rooms, 8 private rooms,
-4 family apartments.
-Food co-op, coffeeshop, school, event space on ground floor. Equity and dividends in the arcology paid on Ethereum.
-### Phase Four
 
-### (self-governance)
 
-Building achieves energy sustainability and self-governance,
-with a system for training the next generation of leaders.
+## Tweaking
+* Customise the tailwind.config.js and tailwind.config.css to create the tailwind.css for your project
+* Use purgecss/cssnano to remove unused CSS and minify the final CSS file
 
-## Our Team
+Refer to the [full setup guide for detailed instructions](https://www.tailwindtoolbox.com/setup)
 
-<img class="bio-pic" src="images/paul-pham.png"><br/>
-<div class="bio-name">Paul Pham</div>
-<div class="bio-title">Chief Arcologist, Developer</div>
-<img class="icon" src="/icons/github.svg"></i>
-<img class="icon" src="/icons/linkedin.svg"></i>
-<img class="icon" src="/icons/twitter.svg"></i>
-<img class="icon" src="/icons/medium.svg"></i>
+## Bugs and Issues
 
-## <header> Location and Rooms </header>
+Have a bug, suggestion or question? [Open a new issue](https://github.com/tailwindtoolbox/StarterTemplate/issues/new) here on GitHub.
 
- <p>
-303 Stockholm St, Apt 4F and 4B<br/>
-Brooklyn, NY
-</p>
+## Creator
 
- <ul>
-  <li>
-      <header>Sky room, with 14 foot windows (1P)</header>
-      <a href="https://www.airbnb.com/rooms/24063724">
-          <img src="" />
-      </a>
-  </li>
-  <li>
-      <a href="https://www.airbnb.com/rooms/23838154">
-          <header>Private room, on the right-hand path (3P)</header>
-          <img src="https://a0.muscache.com/im/pictures/a094b702-db8b-4536-8097-10a3b6ae6ec8.jpg?aki_policy=xx_large" />
-      </a>
-  </li>
-  <li>
-      <header>Captain's room (4P)</header>
-      <a href="">
-          <img src="" />
-      </a>
-  </li>
-  <li>
-      <a href="https://www.airbnb.com/rooms/23862292">
-          <header>Upper bunk in two-person shared room (5U)</header>
-          <img src="https://a0.muscache.com/im/pictures/535dfcff-3a1c-4d7f-91aa-3de55c1e9faf.jpg?aki_policy=x_large" />
-      </a>
-  </li>
-  <li>
-         <a href="https://www.airbnb.com/rooms/23862384">
-          <header>Lower bunk in two-person shared room (5L)</header>
-          <img src="https://a0.muscache.com/im/pictures/535dfcff-3a1c-4d7f-91aa-3de55c1e9faf.jpg?aki_policy=x_large" />
-      </a>
-  </li>
-  <li>
-      <a href="https://www.airbnb.com/rooms/23308575">
-          <header>Upper bunk in two-person shared room (6U)</header>
-          <img src="https://a0.muscache.com/im/pictures/6394ce7f-488e-4c92-aea0-2dd3f6b274ee.jpg?aki_policy=xx_large" />
-      </a>
-  </li>
-  <li>
-      <a href="https://www.airbnb.com/rooms/23862431">
-          <header>Lower bunk in two-person shared room (6L)</header>
-          <img src="https://a0.muscache.com/im/pictures/6394ce7f-488e-4c92-aea0-2dd3f6b274ee.jpg?aki_policy=xx_large" />
-      </a>
-  </li>
-  <li>
-      <a href="https://www.airbnb.com/rooms/23811439">
-          <header>Private room on the left-hand path (7P)</header>
-          <img src="https://a0.muscache.com/im/pictures/0fc92b64-8af8-4344-9a5f-c0d7f2d3dfed.jpg?aki_policy=xx_large" />
-      </a>
-  </li>
-  <li>
-      <a href="https://www.airbnb.com/rooms/24039445">
-          <header>Upper bunk in two-person shared room (8U)</header>
-          <img src="https://a0.muscache.com/im/pictures/c2067c02-89a9-4f0c-add3-69c99c0cf157.jpg?aki_policy=xx_large" />
-      </a>
-  </li>
-  <li>
-      <a href="https://www.airbnb.com/rooms/23881996">
-          <header>Lower bunk in two-person shared room (8L)</header>
-          <img src="https://a0.muscache.com/im/pictures/c2067c02-89a9-4f0c-add3-69c99c0cf157.jpg?aki_policy=xx_large" />
-      </a>
-  </li>
-</ul>
+[Tailwind Toolbox](https://www.tailwindtoolbox.com/) was created by and is maintained by **[Amrit Nagi](https://amritnagi.info/)**, Co-owner of [Astrava.Solutions](https://astrava.solutions).
+
+* https://twitter.com/tailwindtoolbox
+* https://twitter.com/amritnagi
+* https://github.com/tailwindtoolbox
+
+Tailwind Toolbox is based on the [Tailwind CSS](https://www.tailwindcss.com/) framework created by [Adam Wathan](https://twitter.com/adamwathan), [Jonathan Reinink](https://twitter.com/reinink), [David Hemphill](https://twitter.com/davidhemphill) and [Steve Schoger](https://twitter.com/steveschoger)

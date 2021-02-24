@@ -23,7 +23,7 @@
         "create:js": "./node_modules/.bin/tailwind init tailwind.config.js",
         "dev:css": "./node_modules/.bin/tailwind build tailwind.config.css -c tailwind.config.js -o dist/css/tailwind.css",
         "build:css": "postcss tailwind.config.css -o dist/css/tailwind.min.css",
-	"build:html": "cp public/index.html dist/index.html",
+	"build:html": "cp -prv public/* dist/",
 	"build": "yarn build:css && yarn build:html"
     }
 }

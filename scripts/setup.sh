@@ -1,8 +1,9 @@
 #!/bin/sh
+set -x
 
 # Set up symlinks when you first clone a repo, for easy static site editing
 
-CITIES="detroit tempe"
+CITIES="detroit snowflake"
 mkdir -p dist
 
 yarn build:css
@@ -12,7 +13,7 @@ for city in ${CITIES};
     mkdir -p dist/$city/css
     mkdir -p dist/$city/images
     # if [ ! -e "./dist/$city/index.html" ]; then
-    cp public/$city/index.html ./dist/$city/index.html
+    cp -u public/$city/index.html ./dist/$city/index.html
     # fi
     # TODO Separate out Tailwinds CSS for each city if they diverge
     # Windows doesn't support symlinks, so copy

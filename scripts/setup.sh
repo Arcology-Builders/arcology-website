@@ -19,5 +19,6 @@ for city in ${CITIES};
     # Windows doesn't support symlinks, so copy
     #if [ ! -f "./dist/$city/css/tailwind.min.css" ]; then
     cp ./dist/css/tailwind.min.css ./dist/$city/css/tailwind.min.css
+    cp -u public/$city/images/* ./dist/$city/images/
     #fi
 done

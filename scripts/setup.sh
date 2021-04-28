@@ -6,7 +6,9 @@ set -x
 CITIES="detroit snowflake"
 mkdir -p dist
 
-yarn build:css
+# Assume that CSS has already been built
+# If not, explicitly call
+# yarn build:css
 
 for city in ${CITIES};
     do echo "Creating dist files for ${city}"

@@ -31,6 +31,20 @@ Then load the `index.html` file above in your browser locally at
 http://localhost:8000/detroit
 ```
 
+## Deployment
+
+```
+ssh ubuntu@detroitarcology.org
+
+sudo git pull
+
+cd /var/www/arcology-website
+yarn clean
+yarn build
+```
+
+
+
 ## Tech Stack
 
 We use a static responsive website made with TailwindsCSS and plain HTML.

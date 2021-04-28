@@ -13,12 +13,12 @@ for city in ${CITIES};
     mkdir -p dist/$city/css
     mkdir -p dist/$city/images
     # if [ ! -e "./dist/$city/index.html" ]; then
-    cp -u public/$city/index.html ./dist/$city/index.html
+    cp public/$city/index.html ./dist/$city/index.html
     # fi
     # TODO Separate out Tailwinds CSS for each city if they diverge
     # Windows doesn't support symlinks, so copy
     #if [ ! -f "./dist/$city/css/tailwind.min.css" ]; then
     cp ./dist/css/tailwind.min.css ./dist/$city/css/tailwind.min.css
-    cp -u public/$city/images/* ./dist/$city/images/
+    cp public/$city/images/* ./dist/$city/images/
     #fi
 done

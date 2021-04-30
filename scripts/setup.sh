@@ -20,7 +20,7 @@ for city in ${CITIES};
     # TODO Separate out Tailwinds CSS for each city if they diverge
     # Windows doesn't support symlinks, so copy
     #if [ ! -f "./dist/$city/css/tailwind.min.css" ]; then
-    cp ./dist/css/tailwind.min.css ./dist/$city/css/tailwind.min.css
+    cp ./public/css/tailwind.min.css ./dist/$city/css/tailwind.min.css
     cp public/$city/images/* ./dist/$city/images/
     #fi
 done

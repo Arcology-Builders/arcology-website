@@ -21,10 +21,6 @@ Serve the files locally using any static site server, such as
 ```
 python3 -m http.server -d dist
 ```
-or
-```
-serve -s ./dist
-```
 
 Then load the `index.html` file above in your browser locally at
 ```

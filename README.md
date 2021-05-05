@@ -32,14 +32,16 @@ http://localhost:8000/detroit
 ```
 ssh ubuntu@detroitarcology.org
 
-sudo git pull
-
 cd /var/www/arcology-website
-yarn clean
+git pull
 yarn build
 ```
 
-
+If you are not seeing updates as expected try running:
+```
+yarn clean
+yarn build
+```
 
 ## Tech Stack
 

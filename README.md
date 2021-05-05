@@ -19,7 +19,7 @@ to generate files to serve in the `dist/` directory.
 
 Serve the files locally using any static site server, such as
 ```
-python3 -m https.server -d dist
+python3 -m http.server -d dist
 ```
 or
 ```

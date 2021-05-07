@@ -13,14 +13,21 @@ mkdir -p dist
 for city in ${CITIES};
     do echo "Creating dist files for ${city}"
     mkdir -p dist/$city/css
-    mkdir -p dist/$city/images
-    # if [ ! -e "./dist/$city/index.html" ]; then
-    cp public/$city/index.html ./dist/$city/index.html
-    # fi
+    if [ ! -e "./dist/$city/index.html" ]; then
+        cd ./dist/$city/
+        ln -s ../../public/$city/index.html .
+        cd ../..
+    fi
     # TODO Separate out Tailwinds CSS for each city if they diverge
     # Windows doesn't support symlinks, so copy
-    #if [ ! -f "./dist/$city/css/tailwind.min.css" ]; then
-    cp ./public/css/tailwind.min.css ./dist/$city/css/tailwind.min.css
-    cp public/$city/images/* ./dist/$city/images/
-    #fi
+    if [ ! -e "./dist/$city/css/tailwind.min.css" ]; then
+        cd ./dist/$city/css
+        ln -s ../../../public/css/tailwind.min.css .
+        cd ../../..
+    fi
+    if [ ! -e "./dist/$city/images" ]; then
+        cd ./dist/$city
+        ln -s ../../public/$city/images .
+        cd ../..
+    fi
 done

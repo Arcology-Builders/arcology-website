@@ -34,11 +34,6 @@ ssh ubuntu@detroitarcology.org
 
 cd /var/www/arcology-website
 git pull
-yarn build
-```
-
-If you are not seeing updates as expected try running:
-```
 yarn clean
 yarn build
 ```

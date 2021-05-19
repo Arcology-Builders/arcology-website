@@ -16,16 +16,18 @@
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "4.0.3",
         "cssnano": "5.0.2",
+        "live-server": "^1.2.1",
         "tailwindcss": "2.1.2"
     },
     "scripts": {
         "clean": "./scripts/clean.sh",
+        "start": "python3 -m http.server -d ./dist",
+        "start:detroit": "python3 -m http.server -d ./dist/detroit",
         "setup": "./scripts/setup.sh",
         "del:js": "rimraf tailwind.config.js",
         "create:js": "./node_modules/.bin/tailwind init tailwind.config.js",
         "dev:css": "./node_modules/.bin/tailwind build tailwind.config.css -c tailwind.config.js -o dist/css/tailwind.css",
         "build:css": "postcss tailwind.config.css -o public/css/tailwind.min.css",
-	    "build:html": "cp -prv public/* dist/",
-	    "build": "./scripts/setup.sh"
+        "build": "./scripts/setup.sh"
     }
 }

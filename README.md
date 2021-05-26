@@ -17,15 +17,19 @@ yarn build
 ```
 to generate files to serve in the `dist/` directory.
 
-Serve the files locally using any static site server, such as
+Serve the files locally using a live-updating static site server:
 ```
-python3 -m http.server -d dist
+yarn start:detroit
 ```
 
-Then load the `index.html` file above in your browser locally at
+Your browser should automatically open to the URL below.
+If it doesn't, open the URL below manually.
 ```
-http://localhost:8000/detroit
+http://localhost:8080/detroit
 ```
+
+We recommend keeping the website and your code side-by-side.
+As you make changes, they'll automatically cause a refresh on the right.
 
 ## Deployment
 
@@ -34,11 +38,6 @@ ssh ubuntu@detroitarcology.org
 
 cd /var/www/arcology-website
 git pull
-yarn build
-```
-
-If you are not seeing updates as expected try running:
-```
 yarn clean
 yarn build
 ```

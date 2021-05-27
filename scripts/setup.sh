@@ -6,6 +6,13 @@ set -x
 CITIES="detroit snowflake"
 mkdir -p dist
 
+if [ ! -e "./dist/images" ]; then
+    cd ./dist/
+    ln -s ../public/images .
+    cd ..
+fi
+
+
 # Assume that CSS has already been built
 # If not, explicitly call
 # yarn build:css

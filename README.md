@@ -20,6 +20,10 @@ to generate files to serve in the `dist/` directory.
 Serve the files locally using a live-updating static site server:
 ```
 yarn start:detroit
+
+or, alternatively:
+
+python3 -m http.server -d dist
 ```
 
 Your browser should automatically open to the URL below.

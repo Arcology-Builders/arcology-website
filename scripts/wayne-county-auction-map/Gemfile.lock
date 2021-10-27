@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (10.0.2)
+    mini_portile2 (2.4.0)
+    nokogiri (1.9.1)
+      mini_portile2 (~> 2.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  byebug
+  nokogiri
+
+RUBY VERSION
+   ruby 2.2.4p230
+
+BUNDLED WITH
+   1.17.1

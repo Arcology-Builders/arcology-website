@@ -43,7 +43,7 @@
         <div class="flex items-center">
           <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
             <!--Icon from: http://www.potlabicons.com/ -->
-            Detroit Arcology
+            &nbsp;Detroit Arcology
           </a>
         </div>
         <div class="block lg:hidden pr-4">
@@ -54,33 +54,31 @@
             </svg>
           </button>
         </div>
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-transparent text-black p-2 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3 text-white toggleColour">
-              <a class="inline-block py-2 px-4 no-underline" href="#values">Values</a>
+              <a class="inline-block hover:underline py-2 px-4" href="#values">Values</a>
             </li>
             <li class="mr-3 text-white toggleColour">
-              <a class="inline-block no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="https://forum.detroitarcology.org">Forum</a>
+              <a class="inline-block hover:underline py-2 px-4" href="https://forum.detroitarcology.org">Forum</a>
             </li>
             <li class="mr-3 text-white toggleColour">
-              <a class="inline-block no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="https://www.meetup.com/detroit-arcology/">Meetup</a>
+              <a class="inline-block hover:underline py-2 px-4" href="https://www.meetup.com/detroit-arcology/">Meetup</a>
             </li>
             <li class="mr-3 text-white toggleColour">
-              <a class="inline-block no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="https://youtube.com/playlist?list=PLAAmnDtuht3DVLCnQy6APlEjHpRJgLLhS">Videos</a>
+              <a class="inline-block hover:underline py-2 px-4" href="https://youtube.com/playlist?list=PLAAmnDtuht3DVLCnQy6APlEjHpRJgLLhS">Videos</a>
             </li>
             <li class="mr-3 text-white toggleColour">
-              <a class="inline-block no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#projects">Projects</a>
+              <a class="inline-block hover:underline py-2 px-4" href="#projects">Projects</a>
             </li>
             <li class="mr-3 text-white toggleColour">
-              <a class="inline-block no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#people">People</a>
+              <a class="inline-block hover:underline py-2 px-4" href="#people">People</a>
             </li>
             <li>
               <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSerbqMLMeDAC3QvWZw3itI3EdBdJWHNoFVKMGOXJW0gXJ1EdA/viewform?usp=sf_link" target="_blank"
             id="navAction"
-            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-            Join Us
-          </a>
+            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Join Us</a>
             </li>
           </ul>
         </div>
@@ -395,7 +393,6 @@
             toToggle[i].classList.remove("text-white");
           }
           header.classList.add("shadow");
-          navcontent.classList.remove("bg-gray-100");
           navcontent.classList.add("bg-white");
         } else {
           header.classList.remove("bg-white");
@@ -411,7 +408,6 @@
 
           header.classList.remove("shadow");
           navcontent.classList.remove("bg-white");
-          navcontent.classList.add("bg-gray-100");
         }
       });
     </script>

@@ -3,7 +3,7 @@ set -x
 
 # Set up symlinks when you first clone a repo, for easy static site editing
 
-CITIES="detroit snowflake"
+CITIES="detroit snowflake learn"
 mkdir -p dist
 
 if [ ! -e "./dist/images" ]; then

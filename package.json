@@ -29,6 +29,7 @@
         "build:html": "cp -prv public/* dist/",
         "build": "./scripts/setup.sh",
         "start": "live-server ./dist",
-        "start:detroit": "live-server ./dist/detroit"
+        "start:detroit": "live-server ./dist/detroit",
+        "start:beach": "live-server ./dist/beach"
     }
 }

@@ -3,7 +3,7 @@ set -x
 
 # Set up symlinks when you first clone a repo, for easy static site editing
 
-CITIES="detroit snowflake learn"
+CITIES="detroit snowflake learn beach"
 mkdir -p dist
 
 if [ ! -e "./dist/images" ]; then
@@ -22,9 +22,15 @@ for city in ${CITIES};
     mkdir -p dist/$city/css
     if [ ! -e "./dist/$city/index.html" ]; then
         cd ./dist/$city/
-        ln -s ../../public/$city/index.html .
+        ln -s ../../public/$city/index.html .        
         cd ../..
     fi
+    if [ ! -e "./dist/$city/script.js" ]; then
+        cd ./dist/$city/
+        ln -s ../../public/$city/script.js .        
+        cd ../..
+    fi
+
     # TODO Separate out Tailwinds CSS for each city if they diverge
     # Windows doesn't support symlinks, so copy
     if [ ! -e "./dist/$city/css/tailwind.min.css" ]; then
@@ -37,4 +43,19 @@ for city in ${CITIES};
         ln -s ../../public/$city/images .
         cd ../..
     fi
+    if [ -e "./dist/$city/css" ]; then
+        cd ./dist/$city
+        mkdir -p css
+        cd css
+        for file in $(ls ../../../public/$city/css/*.css); do
+            echo $file
+            ln -s $file .
+        done
+        cd ../../..
+    fi
+
 done
+
+if [ ! -e "./dist/favicon.ico" ]; then
+    cp ./public/favicon.ico ./dist/
+fi
